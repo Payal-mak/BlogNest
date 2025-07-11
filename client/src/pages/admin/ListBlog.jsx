@@ -7,7 +7,7 @@ const ListBlog = () => {
 
     const [blogs, setBlogs] = useState([]);
 
-    const fetchBlogs = async () => {
+    const fetchBlogs = () => {
         setBlogs(blog_data)
     }
 
@@ -17,7 +17,7 @@ const ListBlog = () => {
 
     return (
         <div className='flex-1 pt-5 px-5 sm:pt-12 sm:pl-16 bg-blue-50/50'>
-            <h1>ALl Blogs</h1>
+            <h1>All Blogs</h1>
 
             <div className="relative h-4/5 mt-4 max-w-6xl overflow-x-auto shadow rounded-lg scrollbar-hide bg-white">
                 <table className="w-full text-sm text-gray-700">
@@ -31,14 +31,14 @@ const ListBlog = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {blogs.map((blog, index) => (
-                            <BlogTableItem
+                        {blogs.map((blog, index) => {
+                            return <BlogTableItem
                                 key={blog._id}
                                 blog={blog}
                                 fetchBlogs={fetchBlogs}
                                 index={index + 1}
                             />
-                        ))}
+                        })}
                     </tbody>
                 </table>
             </div>
@@ -46,3 +46,4 @@ const ListBlog = () => {
         </div>
     )
 }
+export default ListBlog;
